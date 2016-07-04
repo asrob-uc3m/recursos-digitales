@@ -1,0 +1,524 @@
+
+%\long\def\comment#1{}
+%\comment{
+%  Ejemplo de uso:
+%    \documentstyle[12pt,tesisula]{report}
+%    \begin{document}
+%    \title{How to Write Theses\\
+%        With Two Line Titles}
+%    \author{John Henry Candidate}
+%    \tutor{John Parker}
+%    \firstreader{John Green}
+%    \secondreader{John BigBooty}
+%
+%    \dedicate{
+%    This is the optional\\
+%    dedication page.\\
+%    Break lines up\\
+%    like this.
+%    }
+%
+%    \beforepreface
+%
+%    \prefacesection{Abstract}
+%    An abstract is required in all theses.  Make sure that it fits
+%    on one page!
+%
+%    \afterpreface
+%
+%    \chapter{Introduction}
+%     ...
+%    \chapter{Conclusions}
+%     ...
+%    \appendix
+%    \chapter{A Long Proof}
+%     ...
+%    \bibliographystyle{plain}
+%    \bibliography{mybib}
+%    \end{document}
+%
+%Documentation:
+%    This style file modifies the standard report style to follow the
+%    Dalhousie University Faculty of Graduate Studies' "Regulations for
+%    Submission of Theses".  It sets the margins and required interline
+%    spacing and disallows page breaks at hyphens.
+%
+%    The \beforepreface command creates the title page, a signature page,
+%    and a permission page (optionally).  Then the user should put
+%    preface section(s), using the \prefacesection{section title}
+%    command.  The \afterpreface command then produces the tables of
+%    contents, tables and figures (optionally), and sets things up to
+%    start the main body (on arabic page 1).
+%
+%    The following commands control the typesetting of your thesis:
+%
+%   Basic Information:
+%
+%    \title{thesis title}
+%        - Will appear in large print on page i.  If it is too
+%          long it will automatically be split into separate
+%          lines.  If you wish to specify line breaks, use the
+%          \\ command inside the title.
+%          \title{Very Long\\Title\\Split Over\\Several Lines}
+%          Make sure that there is no space before \\.
+%
+%    \author{author's name}
+%        - Your name as you wish it to appear in the thesis.
+%
+%   Graduation and Submission Information:
+%
+%    \submitdate{month year in which submitted to Graduate Studies}
+%        - date LaTeX'd if omitted
+%
+%    \copyrightyear{year thesis}
+%        - year LaTeX'd if omitted
+%
+%    \convocation{month}{year}
+%        - Date set to next May or Oct. after \submitdate if omitted
+%
+%   Degree Specification:
+%
+%    \msc
+%        - Degree to obtain is Master of Science, M.Sc. (default)
+%    \ma
+%        - Degree to obtain is Master of Arts, M.A.
+%    \phd
+%        - Degree to obtain is Doctor of Philosophy, Ph.D.
+%
+%   Signatures:
+%
+%    \examiner{the external examiner's name}
+%        - Use only for Ph.D.
+%    \supervisor{the supervisor's name}
+%        - Include research supervisor's name.
+%    \firstreader{the first reader's name}
+%        - Include the first reader's name.
+%    \secondreader{the second reader's name}
+%        - Include the second reader's name.
+%    \thirdreader{the third reader's name}
+%        - Omit this command if only two readers (typical M.Sc. case)
+%        - Ph.D. cases usually have at least three readers
+%    \fourthreader{the third reader's name}
+%        - Omit this command if not required (typical Ph.D. case)
+%    \fifthreader{the third reader's name}
+%        - Omit this command if not required (typical Ph.D. case)
+%
+%    Sorry, provisions has been made to allow only seven signatures.
+%
+%
+%   Sectioning commands::
+%
+%    \dedicate{
+%      First line\\
+%      second line\\
+%      last line.
+%    }
+%        - Produces the optional dedication page.  Must be placed
+%          before the \beforepreface command.
+%
+%    \prefacesection{Whatever}
+%    Blah, blah, blah...
+%        - Produces a preface section, such as abstract,
+%          acknowledgments, etc.  This must appear between
+%          \beforepreface and \afterpreface commands.
+%          Typeset similar to chapters, not numbered.
+%
+%    \chapter{Whatever}
+%    Blah, blah, blah...
+%        - Produce a numbered chapter section.
+%
+%    \section{Section name}
+%        - Place prior to a section of a given chapter.
+%
+%    \subsection{Subsection name}
+%        - Place prior to a subsection of a given section.
+%
+%    \appendix
+%        - Place this command before your first appendix chapter.
+%          Use the \chapter command thereafter.  These will be
+%          lettered, not numbered.
+%
+%    \nonumchapter{Whatever}
+%    Blah, blah, blah...
+%        - Produces a chapter section that is not to be numbered,
+%          such as an introduction chapter.  This is used in the
+%          same way as the \chapter command.
+%
+%   Printing draft copies:
+%
+%    \draft
+%        - For printing draft copies of the thesis.  Specifies
+%          on page headers that the copy is draft and specifies
+%          the date printed.  Also specifies draft and date on
+%          the title page.
+%    \nofront
+%        - Specifies not to print the signature and permission
+%          pages, table of contents, and the lists of figures and
+%          tables.  Useful for draft copies to cut done on printing.
+%    \nobib
+%        - Suppresses the printing of the bibliiography.
+%          Useful for draft copies to cut done on printing.
+%
+%   Specialized commands:
+%
+%    \nolistoffigures
+%        - don't produce a List of Figures
+%    \nolistoftables
+%        - don't produce a List of Tables
+%    \twosupervisors
+%        - Use if you have two cosupervisors instead of one supervisor.
+%          Name given by \supervisor{} will go first, \firstreader{}
+%          will be second.  Can be used with Ph.D. format.
+%    \univerity{name of university}
+%        - ``Dalhousie University'' default.  Can specify line breaks
+%          for larger names.
+%    \address{university address}
+%        - ``Halifax, Nova Scotia'' default.
+%    \dept{author's department}
+%        - ``Mathematics Statistics and Computing Science'' default
+%    \faculty{degree granting faculty}
+%        - [Faculty of] ``Graduate Studies'' default
+%    \degree{Full Degree Title}
+%    \degreeinitial{F.D.T.}
+%        - Specify degree name and initials
+%          \degree{Master of Business Administration}
+%          \degreeinitial{M.B.A.}
+%    \permissionfalse
+%        - don't produce a permission page (true by default)
+%
+%This style uses interline spacing that is 1.37 times normal, except
+%in the figure and table environments where normal spacing is used.
+%That can be changed by doing:
+%
+%    \renewcommand{\baselinestretch}{1.5}
+%(or whatever you want instead of 1.5)
+%
+%Unfortunately, that command probably won't take effect unless it comes
+%before the \begin{document} or after a type size changing command like
+%\small or \normalsize.
+%
+%The example above shows the 12pt substyle being used.  This is required
+%for submission copy, but it may be omitted to get smaller draft print.
+%Note that the front material may not look good in smaller print.
+%
+%}
+
+% Define the page heading to be page number only.
+\newcommand{\properpagestyle}{
+       \pagestyle{myheadings}\markboth{}{}\markright{}}
+
+% First thing we do is make sure that report has been loaded.  A
+% common error is to try to use suthesis as a documentstyle.
+\@ifundefined{chapter}{\@latexerr{The `dalthesis' option should be used
+with the `report' document style}{You should probably read the
+dalthesis documentation.}}{}
+
+% We need 1" margins except on the binding edge, where it is 1 1/2"
+% Theses are single-sided, so we don't care about \evensidemargin
+\oddsidemargin 0.5in \evensidemargin 0in
+\marginparwidth 0pt \marginparsep 10pt
+\topmargin 0pt \headsep .5in
+\textheight 8.1in \textwidth 6in
+
+% Disallow page breaks at hyphens (this will give some underfull vbox's,
+% so an alternative is to use \brokenpenalty=100 and manually search
+% for and fix such page breaks)
+\brokenpenalty=100
+
+% Use 1.37 times the normal baseline-to-baseline skip
+\renewcommand{\baselinestretch}{1.37}
+
+% Redefine the macro used for footnotes to use single spacing
+\long\def\@footnotetext#1{\insert\footins{\def\baselinestretch{1}\footnotesize
+    \interlinepenalty\interfootnotelinepenalty
+    \splittopskip\footnotesep
+    \splitmaxdepth \dp\strutbox \floatingpenalty \@MM
+    \hsize\columnwidth \@parboxrestore
+   \edef\@currentlabel{\csname p@footnote\endcsname\@thefnmark}\@makefntext
+    {\rule{\z@}{\footnotesep}\ignorespaces
+      #1\strut}}}
+
+% \author, \title are defined in report; here are the rest of the
+% front matter defining macros
+\def\universidad#1{\gdef\@universidad{#1}}
+\def\direccion#1{\gdef\@direccion{#1}}
+\def\dept#1{\gdef\@dept{#1}}
+\def\facultad#1{\gdef\@facultad{#1}}
+\def\tutor#1{\gdef\@tutor{#1}}
+\def\stutor#1{\gdef\@stutor{#1}}
+\def\superviser#1{\gdef\@tutor{#1}}
+\def\primerjurado#1{\gdef\@primerjurado{#1}}
+\def\segundojurado#1{\gdef\@segundojurado{#1}}
+\def\thirdreader#1{\gdef\@thirdreader{#1}\third@readertrue}
+\def\fourthreader#1{\gdef\@fourthreader{#1}\fourth@readertrue}
+\def\fifthreader#1{\gdef\@fifthreader{#1}\fifth@readertrue}
+\def\examiner#1{\gdef\@examiner{#1}}
+\def\twotutores{\two@tutorestrue}
+\def\submitdate#1{\gdef\@submitdate{#1}}
+\def\copyrightyear#1{\gdef\@copyrightyear{#1}} % \author, \title in report
+\def\grado#1{\gdef\@grado{#1}}
+\def\gradoinitial#1{\gdef\@gradoinitial{#1}}
+\def\lic{\grado{Robótica y Automatización}\gradoinitial{I.S.}}
+\lic % defecto grado
+\def\msc{\grado{Magister Scientiarum}\gradoinitial{M.Sc.}}
+\def\phd{\grado{Doctor of Philosophy}\gradoinitial{Ph.D.}\ph@dtrue}
+\def\ma{\grado{Master of Arts}\gradoinitial{M.A.}}
+\def\@title{}
+\def\@author{}
+\def\@tutor{}
+\def\@stutor{}
+\def\@universidad{Universidad Carlos III de Madrid}
+\def\@direccion{Leganés, Madrid}
+\def\@dept{Departamento de Ingeniería de Sistemas y Automática}
+\def\@facultad{Ingeniería}
+\def\@tutor{}\def\@primerjurado{}\def\@segundojurado{}
+\def\@thirdreader{}\def\@fourthreader{}\def\@fifthreader{}
+\def\@examiner{}
+\def\@submitdate{\ifcase\the\month\or
+  Enero\or Febrero\or Marzo\or Abril\or Mayo\or Junio\or
+  Julio\or Agosto\or Septiembre\or Octubre\or Noviembre\or Diciembre\fi
+  \space \number\the\year}
+\def\@copyrightyear{\number\the\year}
+
+\def\convocation#1#2{\gdef\@convocationmonth{#1}\gdef\@convocationyear{#2}}
+\def\@convwarn{\typeout{Warning!  Convocation date may be incorrect!}}
+\ifnum\month<5
+   \def\@convocationmonth{May}
+   \def\@convocationyear{\number\the\year\@convwarn}
+\else\ifnum\month<10
+   \def\@convocationmonth{October}
+   \def\@convocationyear{\number\the\year\@convwarn}
+\else
+   \def\@convocationmonth{February}
+   \@tempcnta=\year  \advance\@tempcnta by 1
+   \def\@convocationyear{\number\the\@tempcnta\@convwarn}
+\fi\fi
+
+\def\dedicate#1{\dedic@tiontrue\gdef\dedication@text{#1}}
+
+\def\draft{\renewcommand{\properpagestyle}{\pagestyle{myheadings}
+\markright{{\rm Draft Version -- \today}}}\draft@modetrue\properpagestyle}
+\def\nobib{\print@bibfalse}
+\def\nolistoffigures{\figurespagefalse}
+\def\nolistoftables{\tablespagefalse}
+\def\nofront{\front@pagesfalse\permissionfalse\figurespagefalse\tablespagefalse}
+
+% New if constructs:    Default conditions:
+\newif\ifpermission     \permissionfalse
+\newif\iffigurespage    \figurespagetrue
+\newif\iftablespage     \tablespagetrue
+\newif\iffront@pages    \front@pagestrue
+\newif\ifthird@reader   \third@readerfalse
+\newif\iffourth@reader  \fourth@readerfalse
+\newif\iffifth@reader   \fifth@readerfalse
+\newif\ifph@d           \ph@dfalse
+\newif\iftwo@tutors \two@tutorsfalse
+\newif\ifdraft@mode     \draft@modefalse
+\newif\ifprint@bib      \print@bibtrue
+\newif\ifdedic@tion     \dedic@tionfalse
+
+\def\no@breaks#1{{\def\\{ \ignorespaces}#1}}    % disallow explicit line breaks
+
+\def\titlep{
+    \thispagestyle{empty}
+    \ifdraft@mode
+      \begin{center} \Large DRAFT COPY\\ \large Printed \today \end{center}
+    \fi
+    \begin{center}
+     \includegraphics[width=9cm]{figures/uc3m.jpg}\\
+     \vskip0.25in
+	 \normalsize\uppercase\expandafter{DEPARTAMENTO DE INGENIERÍA DE SISTEMAS Y AUTOMÁTICA}
+	 \vskip0.65in
+	 \textbf{\Large\uppercase\expandafter{TESIS DE MÁSTER}}
+	 \vskip0.7in
+     \Large\uppercase\expandafter{\@title}
+    \end{center}
+	\vskip0.45in
+    \begin{center}
+      \large  Autor: \@author\\
+        Tutor: \@tutor\\
+        Director: \@stutor
+    \end{center}
+  \vskip0.35in
+    \begin{center}
+        \normalsize MÁSTER OFICIAL EN  \\
+        \large\uppercase\expandafter{\@grado} \\
+			\vskip0.5in
+        \small \uppercase \expandafter{\@direccion} \\
+       \uppercase \expandafter{\@submitdate}
+    \end{center}
+	\newpage
+	}
+
+
+\def\signature#1#2{\parbox[b]{1in}{\smash{#1}\vskip12pt}
+\hfill \parbox[t]{3in}{\shortstack{\vrule width 3in height 0.4pt\\\small#2}}}
+\def\signaturepage{%
+    \thispagestyle{empty}%
+    \begin{quotation}
+    \begin{center}
+        \uppercase\expandafter{\@universidad} \\
+       MÁSTER OFICIAL EN ROBÓTICA Y AUTOMATIZACIÓN
+    \end{center}
+    \vskip 0.25in plus 0.4in minus 0.1in
+  %  \hyphenpenalty=10000
+    \parindent=36pt
+    \begin{sloppypar}
+	 El tribunal aprueba la Tesis de Máster titulada
+    ``{\bf {\@title}}'' realizada por \mbox{\bf\@author}. \\
+    \end{sloppypar}
+    \vskip0.2in plus 1fill minus 0.1in
+    \begin{flushright}
+    Fecha: \underbar{\ \@submitdate\ }
+    \end{flushright}
+
+    \iffourth@reader
+        \def\sigskip{\vskip0.15in plus 0.2in minus 0.1in}
+        \def\beginskip{\vskip0.3875in plus 0.2in minus 0.1in}
+    \else
+        \def\sigskip{\vskip0.4in plus 0.1in}
+        \def\beginskip{\vskip0.5875in plus 0.1in}
+    \fi
+
+    \ifph@d
+        \beginskip
+        \signature{External Examiner:}{\@examiner} \\
+
+        \iftwo@tutors
+          \sigskip \signature{Directores de tesis:}{\@tutor} \\
+          \sigskip \signature{}{\@primerjurado} \\
+          \sigskip \signature{Jurado:}{\@segundojurado} \\
+        \else
+          \sigskip \signature{Director de tesis:}{\@tutor} \\
+          \sigskip \signature{Jurado:}{\@primerjurado} \\
+          \sigskip \signature{}{\@segundojurado} \\
+        \fi
+    \else % not Ph.D. grado:
+        \beginskip
+        \iftwo@tutors
+          \signature{Tutors:}{\@tutor} \\
+          \sigskip \signature{}{\@primerjurado} \\
+          \ifthird@reader
+            \sigskip \signature{Jurado:}{\@segundojurado} \\
+          \else
+            \sigskip \signature{Jurado:}{\@segundojurado} \\
+          \fi
+        \else
+         % \signature{Tutor:}{\@tutor} \\
+          \sigskip \signature{Tribunal:}{\@primerjurado} \\
+          \sigskip \signature{}{\@segundojurado} \\
+        \fi
+    \fi
+
+        \ifthird@reader
+          \sigskip \signature{}{\@thirdreader} \\
+        \fi
+
+        \iffourth@reader
+          \sigskip \signature{}{\@fourthreader} \\
+        \fi
+
+        \iffifth@reader
+          \sigskip \signature{}{\@fifthreader} \\
+        \fi
+
+    \end{quotation}
+    \vfill\cleardoublepage
+     }
+
+
+\def\beforepreface{
+\typeout{Most over/underfulls in first few pages are the fault of dalthesis.}
+\typeout{Ignore all them.  If uncorrectable errors occur, notify staff.}
+    \pagenumbering{roman}
+    \pagestyle{empty}
+    \titlep
+   \newpage 
+\iffront@pages
+		\cleardoublepage
+		\pagestyle{empty}
+		\signaturepage
+	\else
+		\addtocounter{page}{1}
+\fi
+\iffront@pages
+	\ifdedic@tion
+       \cleardoublepage
+       \pagestyle{empty}
+       \begin{center}\Large\em
+        \dedication@text
+        \vfill
+        \end{center}
+    \fi
+\fi
+    \iffront@pages
+    			\tableofcontents
+    		\else
+    			\addtocounter{page}{1}
+    	\fi
+    
+    \iftablespage
+			\renewcommand{\listtablename}{Index of Tables} %j%
+			\cleardoublepage		
+			\phantomsection
+            \addcontentsline{toc}{chapter}{Index of Tables}
+            \listoftables %j%
+    \fi
+    \iffigurespage
+            \renewcommand{\listfigurename}{Index of Figures} %j%
+			\cleardoublepage		      
+            \phantomsection
+            \addcontentsline{toc}{chapter}{Index of Figures}
+            \listoffigures %j%
+    \fi
+    }
+
+\def\nonumchapter#1{%
+    \chapter*{#1}
+    \phantomsection
+    \addcontentsline{toc}{chapter}{#1}}
+
+\def\prefacesection#1{%
+    \chapter*{#1}
+    \phantomsection
+    \addcontentsline{toc}{chapter}{#1}}
+
+\newenvironment{dedication}{
+\newpage\begin{center}
+\Large\em\null\vskip1in}%
+{\vfill\end{center}}
+
+
+\def\afterpreface{
+	\newpage
+    \pagenumbering{arabic}
+    \typeout{Dalthesis preface pages completed.}
+    \properpagestyle}
+
+% Redefine \thebibliography to go to a new page and put an entry in the
+% table of contents
+\let\@ldthebibliography\thebibliography
+\renewcommand{\thebibliography}[1]{%
+	\cleardoublepage
+	\phantomsection
+    \addcontentsline{toc}{chapter}{Bibliography}
+    \@ldthebibliography{#1}
+}
+
+\let\@ldbibliography\bibliography
+\renewcommand{\bibliography}[1]{
+\ifprint@bib
+	\cleardoublepage
+	\phantomsection
+	\@ldbibliography{#1}
+\fi}
+
+% Start out normal
+%\properpagestyle
+
+%% Plantilla Latex para la Tesis del Master en Robotica y Automatizacion
+%% Realizada por Ana Corrales Paredes UC3M
+%% Plantilla original para PFC de la ULA por el Prof. Edgar Chacon
+%% Editada por Ana Corrales Paredes UC3M
+%% Re-editada por Santiago Morante Cendrero UC3M
+

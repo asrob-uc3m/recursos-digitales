@@ -1,0 +1,93 @@
+% Santiago Morante
+\documentclass[11pt,a4paper,twoside]{book}
+\usepackage[pdftex]{hyperref}
+\usepackage{graphicx}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{invuc3mlib}
+\usepackage{url}
+\usepackage{apacite}
+\usepackage[nottoc,notlof,notlot]{tocbibind}%was commented out.
+\usepackage{palatino}
+\usepackage[Lenny]{fncychap}
+\usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}
+\usepackage{colortbl}
+\usepackage{indentfirst}
+\usepackage{hhline}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\hypersetup{  
+    pdftitle={Master Thesis - Author},
+    pdfsubject={Master Thesis - Author},
+    pdfauthor={Author},
+    pdfkeywords={keyword1} {keyword2},
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black, } 
+
+\usepackage[twoside]{geometry}
+\geometry{twoside, bindingoffset=1cm, papersize={210mm,297mm}, total ={135mm, 220mm}, includefoot, includehead}
+
+\setlength{\topmargin}{0cm} 
+\setlength{\headsep}{8mm}
+\setlength{\marginparwidth}{20mm} \setlength{\evensidemargin}{4mm} \setlength{\oddsidemargin}{20mm}
+\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}%
+\cleardoublepage}}
+
+\begin{document}
+	\title{\textbf{Title}}
+	\author{Author}
+	 
+	\tutor{Prof. One}
+  \stutor{Prof. Two}
+
+        \primerjurado{Dr./Dra.}
+        \segundojurado{Dr./Dra.}
+        \thirdreader{Dr./Dra.}
+		
+    \dedicate{
+\begin{flushright}
+   ``The true knowledge is ...''\\    
+    Daniel
+\end{flushright}
+    }
+
+    	\beforepreface
+
+    \prefacesection{Acknowledgments}
+   Thanks to all ...
+
+  	\prefacesection{Resumen}
+   	 
+Esta tesis desarrolla ...
+
+		\prefacesection{Abstract}
+This thesis develops ...
+
+	\cleardoublepage
+    	\afterpreface
+
+	\pagestyle{fancyplain}
+	\renewcommand{\chaptermark}[1] %
+	{\markboth{#1}{\thechapter\ #1}}
+	\renewcommand{\sectionmark}[1]%
+	{\markright{\thesection\ #1}}
+	\lhead[\fancyplain{}{\bfseries\thepage}]
+	{\fancyplain{}{\bfseries\rightmark}}
+	\rhead[\fancyplain{}{\bfseries\leftmark}] {\fancyplain{}{\bfseries\thepage}}
+	\cfoot{}
+	
+%	\input{chapter1}
+%	\input{chapter2}
+%	\input{chapter3}
+	\input{chapter4}
+%	\input{chapter5}
+%	\input{conclusion}
+
+\bibliographystyle{apacite}
+\bibliography{library}
+		
+\end{document}
